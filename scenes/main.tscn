@@ -5,10 +5,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
 size = Vector2(457, 38)
 
-[node name="Node2D" type="Node2D"]
+[node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_o5qli")]
-position = Vector2(0, 2)
+position = Vector2(178, 79)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(230, 129)
@@ -27,3 +27,9 @@ offset_top = 1.0
 offset_right = 458.0
 offset_bottom = 41.0
 color = Color(0, 0, 0, 1)
+
+[node name="RopeLine" type="Line2D" parent="."]
+position = Vector2(1, 17)
+width = 2.0
+
+[connection signal="ready" from="RopeLine" to="Player" method="_on_rope_line_ready"]
