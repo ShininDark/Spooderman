@@ -6,7 +6,7 @@ var rope_length = 0
 
 # for better gravity
 var gravity_scale = 0.3
-const MAX_VELOCITY = 500
+const MAX_VELOCITY = 550
 
 @onready var rope_line: Line2D = get_node("/root/Main/RopeLine")
 
@@ -15,6 +15,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta * gravity_scale
 		velocity.y = min(velocity.y, MAX_VELOCITY)
+		velocity.x = clampf(velocity.x, -MAX_VELOCITY, MAX_VELOCITY)
 
 	if rope_active:
 		var to_anchor = rope_anchor - global_position
@@ -50,9 +51,9 @@ func _physics_process(delta: float) -> void:
 
 func attach_rope(target_position: Vector2) -> void:
 	var space = get_world_2d().direct_space_state #Access the 2d world
-	var query = PhysicsRayQueryParameters2D.create(global_position, target_position) #creating a ray from player to mouse position
+	var query = PhysicsRayQueryParameters2D.create(global_position, target_position) # creating a ray from player to mouse position
 	query.collision_mask = 2 # only hits buildings
-	query.exclude = [self] #to not hit player
+	query.exclude = [self] # to not hit player
 	
 	var result = space.intersect_ray(query)
 	
