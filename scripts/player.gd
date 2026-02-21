@@ -35,7 +35,7 @@ func _physics_process(delta: float) -> void:
 
 func attach_rope(target_position: Vector2) -> void:
 	var space = get_world_2d().direct_space_state #Access the 2d world
-	var query = PhysicsRayQueryParameters2D.create(global_position, target_position) #creating a raw from player to mouse position
+	var query = PhysicsRayQueryParameters2D.create(global_position, target_position) #creating a ray from player to mouse position
 	query.exclude = [self] #to not hit player
 	
 	var result = space.intersect_ray(query)

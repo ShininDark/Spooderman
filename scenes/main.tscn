@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgsjfiowapr2q"]
+[gd_scene load_steps=4 format=3 uid="uid://cgsjfiowapr2q"]
 
 [ext_resource type="PackedScene" uid="uid://cnvnfcon0vj46" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://beunqawcjbeaj" path="res://scenes/building.tscn" id="2_0wfyh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
 size = Vector2(457, 38)
@@ -14,22 +15,27 @@ position = Vector2(178, 79)
 position = Vector2(230, 129)
 zoom = Vector2(2.5, 2.5)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2(1, 217)
+metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 position = Vector2(228.5, 20)
 shape = SubResource("RectangleShape2D_o5qli")
 
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
+[node name="ColorRect" type="ColorRect" parent="Floor"]
 offset_left = -1.0
 offset_top = 1.0
 offset_right = 458.0
 offset_bottom = 41.0
 color = Color(0, 0, 0, 1)
 
+[node name="Building" parent="Floor" instance=ExtResource("2_0wfyh")]
+position = Vector2(295, -148)
+
 [node name="RopeLine" type="Line2D" parent="."]
 position = Vector2(1, 17)
 width = 2.0
+default_color = Color(0, 0, 0, 1)
 
 [connection signal="ready" from="RopeLine" to="Player" method="_on_rope_line_ready"]
