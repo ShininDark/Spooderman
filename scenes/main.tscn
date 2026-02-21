@@ -16,7 +16,7 @@ position = Vector2(230, 129)
 zoom = Vector2(2.5, 2.5)
 
 [node name="Floor" type="StaticBody2D" parent="."]
-position = Vector2(1, 217)
+position = Vector2(-2, 301)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
@@ -30,8 +30,8 @@ offset_right = 458.0
 offset_bottom = 41.0
 color = Color(0, 0, 0, 1)
 
-[node name="Building" parent="Floor" instance=ExtResource("2_0wfyh")]
-position = Vector2(295, -148)
+[node name="Building" parent="." instance=ExtResource("2_0wfyh")]
+position = Vector2(248, 76)
 
 [node name="RopeLine" type="Line2D" parent="."]
 position = Vector2(1, 17)
